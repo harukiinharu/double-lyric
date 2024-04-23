@@ -125,9 +125,15 @@ try {
 }
 
 if (!hasLyric1 && !hasLyric2) console.log('没有任何一副歌词!')
-else if (hasLyric1 && !hasLyric2) mainaudio.ontimeupdate = lyricUl1.ontimeupdate
-else if (!hasLyric1 && hasLyric2) mainaudio.ontimeupdate = lyricUl2.ontimeupdate
-else {
+else if (hasLyric1 && !hasLyric2) {
+  mainaudio.ontimeupdate = () => {
+    lyricUl1.ontimeupdate()
+  }
+} else if (!hasLyric1 && hasLyric2) {
+  mainaudio.ontimeupdate = () => {
+    lyricUl2.ontimeupdate()
+  }
+} else {
   mainaudio.ontimeupdate = () => {
     lyricUl1.ontimeupdate()
     lyricUl2.ontimeupdate()
