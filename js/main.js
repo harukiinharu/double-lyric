@@ -37,7 +37,7 @@ class LyricUl {
 
 // 在 ul 中添加包含有歌词、翻译的 li
 function addLi(ul, lyricOrigin, lyricTrans) {
-  for (key in lyricOrigin) {
+  for (let key in lyricOrigin) {
     let value1 = lyricOrigin[key].replace(/\s*/g, '')
     let value2 = lyricTrans[key].replace(/\s*/g, '')
 
@@ -83,8 +83,8 @@ function checkLyric(lyricOrigin, lyricTrans) {
   let oldT = 0
   let lyricTime = []
   let i = 0
-  for (key in lyricOrigin) {
-    lyricTime[i] = parseFloat(key.substr(1, 3)) * 60 + parseFloat(key.substring(4, 10))
+  for (let key in lyricOrigin) {
+    lyricTime[i] = parseFloat(key.substring(1, 3)) * 60 + parseFloat(key.substring(4, 10))
     if (lyricTime[i] > oldT) {
       oldT = lyricTime[i]
     } else {
