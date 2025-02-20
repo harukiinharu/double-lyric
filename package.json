@@ -1,0 +1,12 @@
+{
+  "type": "module",
+  "packageManager": "pnpm@10.4.0",
+  "scripts": {
+    "d": "vite",
+    "b": "vite build",
+    "p": "pnpx http-server dist -a 127.0.0.1 -p 3001"
+  },
+  "devDependencies": {
+    "vite": "^6.1.0"
+  }
+}
