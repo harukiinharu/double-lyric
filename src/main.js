@@ -99,7 +99,7 @@ function checkLyric(lyricOrigin, lyricTrans) {
   return lyricTime
 }
 
-// 主流程 main
+// 主流程
 import lyricOrigin1 from './lyric/origin1.json'
 import lyricOrigin2 from './lyric/origin2.json'
 import lyricTrans1 from './lyric/trans1.json'
@@ -108,42 +108,18 @@ import lyricTrans2 from './lyric/trans2.json'
 var mainaudio = $('#mainaudio')[0]
 var container = $('#container')[0]
 
-var hasLyric1 = false
-var hasLyric2 = false
 let lyricUl1, lyricUl2
 
-try {
-  var lyricTime1 = checkLyric(lyricOrigin1, lyricTrans1)
-  if (lyricTime1 !== false) {
-    lyricUl1 = new LyricUl(mainaudio, container, lyricTime1, lyricOrigin1, lyricTrans1)
-    hasLyric1 = true
-  }
-} catch (error) {
-  console.log('未找到第一副歌词与翻译')
+var lyricTime1 = checkLyric(lyricOrigin1, lyricTrans1)
+if (lyricTime1 !== false) {
+  lyricUl1 = new LyricUl(mainaudio, container, lyricTime1, lyricOrigin1, lyricTrans1)
+}
+var lyricTime2 = checkLyric(lyricOrigin2, lyricTrans2)
+if (lyricTime2 !== false) {
+  lyricUl2 = new LyricUl(mainaudio, container, lyricTime2, lyricOrigin2, lyricTrans2)
 }
 
-try {
-  var lyricTime2 = checkLyric(lyricOrigin2, lyricTrans2)
-  if (lyricTime2 !== false) {
-    lyricUl2 = new LyricUl(mainaudio, container, lyricTime2, lyricOrigin2, lyricTrans2)
-    hasLyric2 = true
-  }
-} catch (error) {
-  console.log('未找到第二副歌词与翻译')
-}
-
-if (!hasLyric1 && !hasLyric2) console.log('没有任何一副歌词!')
-else if (hasLyric1 && !hasLyric2) {
-  mainaudio.ontimeupdate = () => {
-    lyricUl1.ontimeupdate()
-  }
-} else if (!hasLyric1 && hasLyric2) {
-  mainaudio.ontimeupdate = () => {
-    lyricUl2.ontimeupdate()
-  }
-} else {
-  mainaudio.ontimeupdate = () => {
-    lyricUl1.ontimeupdate()
-    lyricUl2.ontimeupdate()
-  }
+mainaudio.ontimeupdate = () => {
+  lyricUl1.ontimeupdate()
+  lyricUl2.ontimeupdate()
 }
