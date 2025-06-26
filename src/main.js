@@ -1,3 +1,5 @@
+import $ from 'jquery'
+
 // 歌词翻译滚动类
 class LyricUl {
   constructor(mainaudio, container, lyricTime, lyricOrigin, lyricTrans) {
@@ -97,19 +99,25 @@ function checkLyric(lyricOrigin, lyricTrans) {
   return lyricTime
 }
 
-// 开始
+// 主流程 main
+import lyricOrigin1 from './lyric/origin1.json'
+import lyricOrigin2 from './lyric/origin2.json'
+import lyricTrans1 from './lyric/trans1.json'
+import lyricTrans2 from './lyric/trans2.json'
+
 var mainaudio = $('#mainaudio')[0]
 var container = $('#container')[0]
 
 var hasLyric1 = false
 var hasLyric2 = false
+let lyricUl1, lyricUl2
 
 try {
   var lyricTime1 = checkLyric(lyricOrigin1, lyricTrans1)
   if (lyricTime1 !== false) {
-    var lyricUl1 = new LyricUl(mainaudio, container, lyricTime1, lyricOrigin1, lyricTrans1)
+    lyricUl1 = new LyricUl(mainaudio, container, lyricTime1, lyricOrigin1, lyricTrans1)
+    hasLyric1 = true
   }
-  hasLyric1 = true
 } catch (error) {
   console.log('未找到第一副歌词与翻译')
 }
@@ -117,9 +125,9 @@ try {
 try {
   var lyricTime2 = checkLyric(lyricOrigin2, lyricTrans2)
   if (lyricTime2 !== false) {
-    var lyricUl2 = new LyricUl(mainaudio, container, lyricTime2, lyricOrigin2, lyricTrans2)
+    lyricUl2 = new LyricUl(mainaudio, container, lyricTime2, lyricOrigin2, lyricTrans2)
+    hasLyric2 = true
   }
-  hasLyric2 = true
 } catch (error) {
   console.log('未找到第二副歌词与翻译')
 }

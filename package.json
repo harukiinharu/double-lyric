@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "d": "vite",
+    "b": "vite build",
+    "p": "bunx http-server dist -a localhost -p 5173"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}
