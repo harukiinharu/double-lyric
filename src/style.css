@@ -23,10 +23,6 @@ body {
   }
 }
 
-ul {
-  transition-duration: 600ms;
-}
-
 ul,
 li {
   list-style: none;
