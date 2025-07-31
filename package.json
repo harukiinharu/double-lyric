@@ -9,6 +9,6 @@
     "jquery": "^3.7.1"
   },
   "devDependencies": {
-    "vite": "^7.0.0"
+    "vite": "^7.0.6"
   }
 }
